@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Quotes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+    <div class="d-flex justify-content-between mt-5 mr-5">
+
+        <div class="flex-col">
+
+            <h4 class="mt-5 ml-5"> {{ user.first_name }} {{ user.last_name }} Quotes </h4>
+
+            {% for quote in user.uploaded_quote.all %}
+            <div class="card ml-5 mt-5" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title"> {{ quote.author }} </h5>
+                    <p class="card-text"> {{ quote.quote }} </p>
+                </div>
+
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+        <p mt-5 mr-5><a href="/quotes">Back</a> | <a href="/log_out">Logout</a></p>
+
+    </div>
+
+</body>
+
+
+</html>

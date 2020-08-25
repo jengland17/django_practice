@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register or Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+    <div class="d-flex justify-content-around align-content-between mt-5 flex-row">
+
+        <div class="register">
+
+            <h3> Registration </h3>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form action="/register" method="post">
+                {% csrf_token %}
+
+                <p>First Name: <input class="form-control" type="text" name="form_first"> </p>
+
+                <p>Last Name: <input class="form-control" type="text" name="form_last"> </p>
+
+                <p>Email: <input class="form-control" type="email" name="form_email"></p>
+
+                <p>Password: <input class="form-control" type="password" name="password"></p>
+
+                <p>Confirm Password: <input class="form-control" type="password" name="confirm_pass"></p>
+
+                <input type="submit" value="Register">
+
+            </form>
+
+        </div>
+
+        <div class="login">
+
+            <h3> Login </h3>
+
+            <form action="/login" method="post">
+                {% csrf_token %}
+
+                <p>Email: <input class="form-control" type="text" name="form_email"> </p>
+
+                <p>Password: <input class="form-control" type="password" name="password"></p>
+
+                <input type="submit" value="Login">
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

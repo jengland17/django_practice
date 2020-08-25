@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+    <div class="d-flex justify-content-around">
+
+        <div class="d-flex flex-column">
+
+            <h1 class="mt-5 ml-5">Edit My Account</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form class="mt-5 ml-5" action="/updateUser/{{ userToEdit.id }}" method="POST">
+                {% csrf_token %}
+
+                <p>First Name:</p>
+                <input type="text" name="form_first" value="{{ userToEdit.first_name }}">
+
+                <p>Last Name:</p>
+                <input type="text" name="form_last" value="{{ userToEdit.last_name }}">
+
+                <p>Email:</p>
+                <input type="email" name="form_email" value=" {{ userToEdit.email }} ">
+
+                <br>
+
+                <button class="btn-primary mt-5">Update</button>
+
+            </form>
+
+        </div>
+
+        <p class="mt-5 ml-5"><a href="/quotes">Back</a> | <a href="/log_out">Logout</a></p>
+
+    </div>
+
+</body>
+
+
+</html>
